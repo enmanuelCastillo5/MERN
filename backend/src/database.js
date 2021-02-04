@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PW}@cluster0.wqmzv.mongodb.net/mernDB?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PW}@cluster0.wqmzv.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
 const options = {
   useNewUrlParser: true,
