@@ -8,6 +8,7 @@ import NotesList from './components/NotesList';
 
 function App() {
   return (
+    <div className='container'>
     <BrowserRouter>
       <Navigation />
       <Switch>
@@ -17,6 +18,7 @@ function App() {
         <Route path='/user' component={CreateUser} />
       </Switch>
     </BrowserRouter>
+    </div>
   );
 }
 

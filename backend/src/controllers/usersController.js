@@ -2,8 +2,8 @@ const usersController = {};
 const User = require('../models/User');
 
 usersController.getUsers = async (req, res) => {
-  const allUser = await User.find();
-  res.json({ allUser });
+  const users = await User.find();
+  res.json(users);
 };
 
 usersController.getUser = async (req, res) => {
@@ -13,10 +13,12 @@ usersController.getUser = async (req, res) => {
 };
 
 usersController.createUser = async (req, res) => {
-  const newUser = new User(req.body);
+  const { username } = req.body;
   try {
-    const savedUser = await newUser.save();
-    res.status(200).send(savedUser);
+    const newUser = new User({ username });
+    await newUser.save();
+    res.json('User created');
+    res.status(200).send(newUser);
   } catch (error) {
     console.log(error);
   }
@@ -34,13 +36,8 @@ usersController.updatedUser = async (req, res) => {
 
 usersController.deleteUser = async (req, res) => {
   const { id } = req.params;
-  try {
-    // eslint-disable-next-line no-unused-vars
-    const deletedUser = await User.findByIdAndDelete(id);
-    res.send({ message: 'User was Deleted' }).status(200);
-  } catch (error) {
-    console.log(error);
-  }
+  await User.findByIdAndDelete(id);
+  res.json('User deleted');
 };
 
 module.exports = usersController;
