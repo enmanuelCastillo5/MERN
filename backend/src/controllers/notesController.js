@@ -2,15 +2,13 @@ const noteController = {};
 const Note = require('../models/Note');
 
 noteController.getNotes = async (req, res) => {
-  const allNotes = await Note.find();
-
-  res.json({ allNotes });
+  const notes = await Note.find();
+  res.json(notes);
 };
 
-noteController.getNoteId = async (req, res) => {
-  const { id } = req.params;
-  const noteId = await Note.findById(id);
-  res.json({ noteId });
+noteController.getNote = async (req, res) => {
+  const note = await Note.findById(req.params.id);
+  res.json(note);
 };
 
 noteController.createNotes = async (req, res) => {

@@ -22,12 +22,12 @@ class createUser extends Component {
     }
     onSubmit = async (e) => {
         e.preventDefault();
+        // eslint-disable-next-line no-unused-vars
         const res =  await axios.post('http://localhost:4000/api/users', {
             username: this.state.username
         })
         this.setState({username: ''})
         this.getUsers();
-        console.log(res);
     }
 
     deleteUser = async (id) => {

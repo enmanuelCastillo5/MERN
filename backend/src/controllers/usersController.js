@@ -6,12 +6,6 @@ usersController.getUsers = async (req, res) => {
   res.json(users);
 };
 
-usersController.getUser = async (req, res) => {
-  const { id } = req.params;
-  const user = await User.findById(id);
-  res.json({ user });
-};
-
 usersController.createUser = async (req, res) => {
   const { username } = req.body;
   try {
@@ -19,16 +13,6 @@ usersController.createUser = async (req, res) => {
     await newUser.save();
     res.json('User created');
     res.status(200).send(newUser);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-usersController.updatedUser = async (req, res) => {
-  const { id } = req.params;
-  try {
-    const updatedUser = await User.findByIdAndUpdate(id, req.body, { new: true });
-    res.status(200).send(updatedUser);
   } catch (error) {
     console.log(error);
   }

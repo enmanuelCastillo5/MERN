@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const {
-  getNotes, createNotes, updateNotes, deleteNote, getNoteId,
+  getNotes, createNotes, updateNotes, deleteNote, getNote,
 } = require('../controllers/notesController');
 
 const router = Router();
@@ -10,7 +10,7 @@ router.route('/')
   .post(createNotes);
 
 router.route('/:id')
-  .get(getNoteId)
+  .get(getNote)
   .put(updateNotes)
   .delete(deleteNote);
 
